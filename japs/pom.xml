@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>lobby-parent</artifactId>
+        <groupId>net.ungespielt</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>lobby-japs</artifactId>
+    <build>
+        <plugins>
+            <!-- Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <!-- Maven shading -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Jar Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>net.ungespielt.lobby.japs.LobbyModule</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <!-- Ungespielt Nexus -->
+        <repository>
+            <id>maven-releases-private</id>
+            <url>https://nexus01.umnw.tech/repository/maven-releases-private/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven-releases</id>
+            <url>https://nexus01.umnw.tech/repository/maven-releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven-snapshots-private</id>
+            <url>https://nexus01.umnw.tech/repository/maven-snapshots-private/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>maven-snapshots</id>
+            <url>https://nexus01.umnw.tech/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- japs api -->
+        <dependency>
+            <groupId>de.jackwhite20</groupId>
+            <artifactId>japs-api-network</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- base api -->
+        <dependency>
+            <groupId>de.jackwhite20</groupId>
+            <artifactId>base-api</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- shared -->
+        <dependency>
+            <groupId>net.ungespielt</groupId>
+            <artifactId>lobby-shared</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.6</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>lobby-parent</artifactId>
+        <groupId>net.ungespielt</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>lobby-spigot</artifactId>
+    <build>
+        <plugins>
+            <!-- Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <!-- Maven shading -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <!-- Spigot nexus -->
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+
+        <!-- Dmulloy2 nexus -->
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>http://repo.dmulloy2.net/content/groups/public/</url>
+        </repository>
+
+        <!-- md_5 suff -->
+        <repository>
+            <id>md_5-snapshots</id>
+            <url>https://repo.md-5.net/content/repositories/snapshots/</url>
+        </repository>
+
+        <!-- Ungespielt Nexus -->
+        <repository>
+            <id>maven-releases-private</id>
+            <url>https://nexus01.umnw.tech/repository/maven-releases-private/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven-releases</id>
+            <url>https://nexus01.umnw.tech/repository/maven-releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven-snapshots-private</id>
+            <url>https://nexus01.umnw.tech/repository/maven-snapshots-private/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>maven-snapshots</id>
+            <url>https://nexus01.umnw.tech/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- Spigot implementation -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>Spigot</artifactId>
+            <version>1.12</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Google Guice -->
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.2.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Google Guice assisted inject extension -->
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-assistedinject</artifactId>
+            <version>4.2.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Lobby api -->
+        <dependency>
+            <groupId>net.ungespielt</groupId>
+            <artifactId>lobby-spigot-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- RxJava -->
+        <dependency>
+            <groupId>io.reactivex.rxjava2</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>2.2.15</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Base API -->
+        <dependency>
+            <groupId>de.jackwhite20</groupId>
+            <artifactId>base</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Shared -->
+        <dependency>
+            <groupId>net.ungespielt</groupId>
+            <artifactId>lobby-shared</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- ProtocolLib -->
+        <dependency>
+            <groupId>com.comphenix.protocol</groupId>
+            <artifactId>ProtocolLib-API</artifactId>
+            <version>4.4.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Social API -->
+        <dependency>
+            <groupId>net.ungespielt.social</groupId>
+            <artifactId>social-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- NoCheatPlus API -->
+        <dependency>
+            <groupId>fr.neatmonster</groupId>
+            <artifactId>nocheatplus</artifactId>
+            <version>3.16.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

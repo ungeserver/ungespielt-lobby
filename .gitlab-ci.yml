@@ -1,0 +1,26 @@
+stages:
+ - build
+ - deploy
+ - trigger
+build:
+  stage: build
+  script: "mvn clean package"
+  artifacts:
+    paths:
+    - japs/target/lobby-japs-1.0-SNAPSHOT.jar
+    - japs/target/lobby-japs-1.0.jar
+    expire_in: 1 week
+deploy:
+  stage: deploy
+  script: "mvn clean deploy"
+  only:
+   - snapshot
+   - release
+trigger-images:
+  stage: trigger
+  script:
+    - "curl -X POST -F token=e4824d9b4a058f86b1b7e9b49827e0 -F ref=snapshot https://git01.umnw.tech/api/v3/projects/103/trigger/builds" # lobby-image
+  only:
+    - snapshot
+  dependencies:
+    - deploy

@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+*.iml
+build.sh
+out
+gen
+target
+testserver
+japs-test-server

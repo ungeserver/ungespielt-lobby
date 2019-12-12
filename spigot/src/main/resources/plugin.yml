@@ -1,0 +1,6 @@
+main: net.ungespielt.lobby.spigot.LobbyPlugin
+name: Lobby
+version: 3.0
+author: Felix 'SasukeKawaii' Klauke
+
+depend: [ProtocolLib, ClusterClient, SocialSpigot, NoCheatPlus]
